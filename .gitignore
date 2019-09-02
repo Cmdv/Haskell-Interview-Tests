@@ -1,0 +1,12 @@
+*.cabal
+*.keter
+*.md.temp
+*.rdb
+*.swp
+*TAGS
+*~
+.DS_Store
+.hsenv*
+.stack-work/
+Haskell-Interview-Tests2.cabal
+\#*

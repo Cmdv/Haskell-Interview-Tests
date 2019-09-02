@@ -1,0 +1,56 @@
+name:                Haskell-Interview-Tests
+version:             0.1.0.0
+github:              "Cmdv/Haskell-Interview-Tests"
+license:             BSD3
+author:              "Vincent Orr"
+maintainer:          "info@cmdv.me"
+copyright:           "2019 Vincent Orr"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/Cmdv/Haskell-Interview-Tests#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- megaparsec
+- text
+- containers
+- comonad
+- union-find
+- matrix
+- vector
+
+
+library:
+  source-dirs: src
+
+executables:
+  Haskell-Interview-Tests-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Haskell-Interview-Tests
+
+tests:
+  Haskell-Interview-Tests-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Haskell-Interview-Tests
