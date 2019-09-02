@@ -45,7 +45,7 @@ getOpDiag m = do
 traceOp :: Num a => MX.Matrix a -> a
 traceOp = V.sum . getOpDiag
 
--- |
+-- | PLUSMINUS
 
 plusMinus :: [Int] -> [Float]
 plusMinus arr = do

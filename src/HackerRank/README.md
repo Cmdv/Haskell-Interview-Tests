@@ -1,4 +1,4 @@
-#Compare the Triplets
+# Compare the Triplets
 
 Alice and Bob each created one problem. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.
 
@@ -16,7 +16,7 @@ Given `a` and `b` , determine their respective comparison points.
 
 For example, `a == [1,2,3]` and `b == [3,2,1]`. For elements `0`, Bob is awarded a point because `a0 < b0`. For the equal elements `a1` and `b1`, no points are earned. Finally, for elements `2`, `a2 > b2` so Alice receives a point. Your return array would be `[1,1]` with Alice's score first and Bob's second.
 
-##Function Description
+## Function Description
 
 Complete the function compareTriplets in the editor below. It must return an array of two integers, the first being Alice's score and the second being Bob's.
 
@@ -26,7 +26,7 @@ a: an array of integers representing Alice's challenge rating
 b: an array of integers representing Bob's challenge rating
 
 
-##Sample Input / Output
+## Sample Input / Output
 ```
 > compareTriplets [5 6 7] [3 6 10]
 [1, 1]
@@ -36,7 +36,7 @@ b: an array of integers representing Bob's challenge rating
 ```
 
 
-#Diagonal Difference
+# Diagonal Difference
 
 Given a square matrix, calculate the absolute difference between the sums of its diagonals.
 
@@ -53,4 +53,17 @@ The left-to-right diagonal = `1 + 5 + 9 == 15`. The right to left diagonal = `3 
 ```
 > diagonalDifference [3, 11, 2, 4, 4, 5, 6, 10, 8, -12]
 -- 3 being the matrix dimmension (3x3) then the rest of the list is the content of matrix
+```
+
+# Plus Minus
+
+Given an array of integers, calculate the fractions of its elements that are positive, negative, and are zeros. Print the decimal value of each fraction on a new line.
+
+For example, given the array `arr == [1, 1, 0, -1, -1]` there are  elements, two positive, two negative and one zero.
+Their ratios would be `2/5 == 0.400000` , `2/5 == 0.400000`  and `1/5 = 0.200000` . It should be printed as:
+
+```
+0.400000
+0.400000
+0.200000
 ```
