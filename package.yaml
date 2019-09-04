@@ -28,6 +28,8 @@ dependencies:
 - union-find
 - matrix
 - vector
+- transformers
+- dlist
 
 
 library:
