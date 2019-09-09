@@ -12,6 +12,7 @@ import           Data.Traversable
 import           Data.Tuple
 import qualified Data.UnionFind.IO    as U
 import           Data.Void
+import           System.Environment (getArgs)
 import           Text.Megaparsec      hiding (State)
 import           Text.Megaparsec.Char
 
