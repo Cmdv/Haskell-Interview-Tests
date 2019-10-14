@@ -2,6 +2,10 @@
 
 module MonadTransformers.MonadTransformers where
 
+import Control.Monad (liftM)
+import Control.Monad.IO.Class (MonadIO(..))
+
+
 newtype Identity a =
   Identity { runIdentity :: a }
 
@@ -215,6 +219,8 @@ eitherT f g (EitherT amb) = either f g =<< amb
 newtype ReaderT r m a =
   ReaderT { runReaderT :: r -> m a }
 
+type Reader r = ReaderT r Identity
+
 instance (Functor m)
          => Functor (ReaderT r m) where
   fmap f (ReaderT rma) = ReaderT (fmap f . rma)
@@ -268,3 +274,41 @@ instance Monad m
   (StateT sma) >>= f = StateT $ \s -> do
     (x, s') <- sma s
     runState (f x) s'
+
+
+----------------------
+-- Lift
+----------------------
+
+class MonadTrans t where
+  lift :: (Monad m) => m a -> t m a
+
+instance MonadTrans IdentityT where
+  lift = IdentityT
+
+instance MonadIO m
+     =>  MonadIO (IdentityT m) where
+  liftIO = lift . liftIO
+----------------------
+
+instance MonadTrans (EitherT e) where
+  lift = EitherT . liftM Right
+
+instance MonadIO m => MonadIO (EitherT e m) where
+  liftIO = lift . liftIO
+----------------------
+
+instance MonadTrans MaybeT where
+  lift = MaybeT . liftM Just
+
+instance MonadIO m => MonadIO (MaybeT m) where
+  liftIO = lift . liftIO
+----------------------
+
+instance MonadTrans (StateT s) where
+  lift ma = StateT (\s -> do
+                       a <- ma
+                       return (a, s)
+                   )
+instance MonadIO m => MonadIO (StateT s m) where
+  liftIO = lift . liftIO
